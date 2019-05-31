@@ -1,56 +1,103 @@
---TODO: Find a way to nicely generalize landcover
---CREATE TABLE IF NOT EXISTS landcover_grouped_gen2 AS (
---	SELECT osm_id, ST_Simplify((ST_Dump(geometry)).geom, 600) AS geometry, landuse, "natural", wetland
---	FROM (
---	  SELECT max(osm_id) AS osm_id, ST_Union(ST_Buffer(geometry, 600)) AS geometry, landuse, "natural", wetland
---	  FROM osm_landcover_polygon_gen1
---	  GROUP BY LabelGrid(geometry, 15000000), landuse, "natural", wetland
---	) AS grouped_measurements
---);
---CREATE INDEX IF NOT EXISTS landcover_grouped_gen2_geometry_idx ON landcover_grouped_gen2 USING gist(geometry);
+-- etldoc: ne_50m_urban_areas -> landuse_z4
+CREATE OR REPLACE VIEW landuse_z4 AS (
+    SELECT NULL::bigint AS osm_id, geometry, 'residential'::text AS landuse, NULL::text AS amenity, NULL::text AS leisure, NULL::text AS tourism, NULL::text AS place, scalerank
+    FROM ne_50m_urban_areas
+    WHERE scalerank <= 2
+);
 
-DROP FUNCTION IF EXISTS landcover_class(VARCHAR, VARCHAR, VARCHAR, VARCHAR);
+-- etldoc: ne_50m_urban_areas -> landuse_z5
+CREATE OR REPLACE VIEW landuse_z5 AS (
+    SELECT NULL::bigint AS osm_id, geometry, 'residential'::text AS landuse, NULL::text AS amenity, NULL::text AS leisure, NULL::text AS tourism, NULL::text AS place, scalerank
+    FROM ne_50m_urban_areas
+);
 
-CREATE FUNCTION landcover_class(landuse VARCHAR, "natural" VARCHAR, leisure VARCHAR, wetland VARCHAR) RETURNS TEXT AS $$
-    SELECT CASE
-        WHEN landuse IN ('farmland', 'farm', 'orchard', 'vineyard', 'plant_nursery') THEN 'farmland'
-        WHEN "natural" IN ('glacier', 'ice_shelf') THEN 'ice'
-        WHEN "natural"='wood' OR landuse IN ('forest') THEN 'wood'
-        WHEN "natural" IN ('bare_rock', 'scree') THEN 'rock'
-        WHEN "natural"='grassland'
-            OR landuse IN ('grass', 'meadow', 'allotments', 'grassland',
-                'park', 'village_green', 'recreation_ground')
-            OR leisure IN ('park', 'garden')
-            THEN 'grass'
-        WHEN "natural"='wetland' OR wetland IN ('bog', 'swamp', 'wet_meadow', 'marsh', 'reedbed', 'saltern', 'tidalflat', 'saltmarsh', 'mangrove') THEN 'wetland'
-        WHEN "natural"IN ('beach', 'sand') THEN 'sand'
-        ELSE NULL
-    END;
-$$ LANGUAGE SQL IMMUTABLE;
+-- etldoc: ne_10m_urban_areas -> landuse_z6
+CREATE OR REPLACE VIEW landuse_z6 AS (
+    SELECT NULL::bigint AS osm_id, geometry, 'residential'::text AS landuse, NULL::text AS amenity, NULL::text AS leisure, NULL::text AS tourism, NULL::text AS place, scalerank
+    FROM ne_10m_urban_areas
+);
 
-DROP FUNCTION IF EXISTS generalize(geometry, float);
+-- etldoc: osm_landuse_polygon_gen5 -> landuse_z9
+CREATE OR REPLACE VIEW landuse_z9 AS (
+    SELECT osm_id, geometry, landuse, amenity, leisure, tourism, place, NULL::int as scalerank
+    FROM osm_landuse_polygon_gen5
+);
 
-CREATE FUNCTION generalize(geom geometry, sz float) RETURNS geometry AS $$
-    SELECT ST_Simplify(ST_Buffer(ST_Buffer(ST_Buffer(geom,sz),-2*sz), sz), sz*0.5)
-$$ LANGUAGE SQL IMMUTABLE;
+-- etldoc: osm_landuse_polygon_gen4 -> landuse_z10
+CREATE OR REPLACE VIEW landuse_z10 AS (
+    SELECT osm_id, geometry, landuse, amenity, leisure, tourism, place, NULL::int as scalerank
+    FROM osm_landuse_polygon_gen4
+);
 
+-- etldoc: osm_landuse_polygon_gen3 -> landuse_z11
+CREATE OR REPLACE VIEW landuse_z11 AS (
+    SELECT osm_id, geometry, landuse, amenity, leisure, tourism, place, NULL::int as scalerank
+    FROM osm_landuse_polygon_gen3
+);
 
+-- etldoc: osm_landuse_polygon_gen2 -> landuse_z12
+CREATE OR REPLACE VIEW landuse_z12 AS (
+    SELECT osm_id, geometry, landuse, amenity, leisure, tourism, place, NULL::int as scalerank
+    FROM osm_landuse_polygon_gen2
+);
 
+-- etldoc: osm_landuse_polygon_gen1 -> landuse_z13
+CREATE OR REPLACE VIEW landuse_z13 AS (
+    SELECT osm_id, geometry, landuse, amenity, leisure, tourism, place, NULL::int as scalerank
+    FROM osm_landuse_polygon_gen1
+);
 
--- etldoc: layer_landcover[shape=record fillcolor=lightpink, style="rounded, filled", label="layer_landcover | <z0_1> z0-z1 | <z2_4> z2-z4 | <z5_6> z5-z6 |<z7> z7 |<z8> z8 |<z9> z9 |<z10> z10 |<z11> z11 |<z12> z12|<z13> z13|<z14_> z14+" ] ;
+-- etldoc: osm_landuse_polygon -> landuse_z14
+CREATE OR REPLACE VIEW landuse_z14 AS (
+    SELECT osm_id, geometry, landuse, amenity, leisure, tourism, place, NULL::int as scalerank
+    FROM osm_landuse_polygon
+);
 
-DROP FUNCTION IF EXISTS layer_landcover(geometry, int);
+-- etldoc: layer_landuse[shape=record fillcolor=lightpink, style="rounded,filled",
+-- etldoc:     label="layer_landuse |<z4> z4|<z5>z5|<z6>z6|<z7>z7| <z8> z8 |<z9> z9 |<z10> z10 |<z11> z11|<z12> z12|<z13> z13|<z14> z14+" ] ;
 
-CREATE FUNCTION layer_landcover(bbox geometry, zoom_level int)
-RETURNS TABLE(geometry geometry, class text, subclass text, landuse text, "natural" text, leisure text, wetland text) AS $$
-    SELECT (ST_Dump(generalize(ST_Collect(geometry),zres(zoom_level)))).geom AS geometry,
-        landcover_class(landuse, "natural", leisure, wetland) AS class,
+CREATE OR REPLACE FUNCTION layer_landuse(bbox geometry, zoom_level int)
+RETURNS TABLE(osm_id bigint, geometry geometry, class text) AS $$
+    SELECT osm_id, geometry,
         COALESCE(
-            NULLIF("natural", ''), NULLIF(landuse, ''),
-            NULLIF(leisure, ''), NULLIF(wetland, '')
-        ) AS subclass,
-        landuse, "natural", leisure, wetland
-        FROM osm_landcover_polygon
-        --WHERE geometry && bbox
-        GROUP BY class, subclass, landuse, "natural", leisure, wetland;
+            NULLIF(landuse, ''),
+            NULLIF(amenity, ''),
+            NULLIF(leisure, ''),
+            NULLIF(tourism, ''),
+            NULLIF(place, '')
+        ) AS class
+        FROM (
+        -- etldoc: landuse_z4 -> layer_landuse:z4
+        SELECT * FROM landuse_z4
+        WHERE zoom_level = 4
+        UNION ALL
+        -- etldoc: landuse_z5 -> layer_landuse:z5
+        SELECT * FROM landuse_z5
+        WHERE zoom_level = 5
+        UNION ALL
+        -- etldoc: landuse_z6 -> layer_landuse:z6
+        -- etldoc: landuse_z6 -> layer_landuse:z7
+        -- etldoc: landuse_z6 -> layer_landuse:z8
+        SELECT * FROM landuse_z6
+        WHERE zoom_level BETWEEN 6 AND 8 AND scalerank-1 <= zoom_level
+        UNION ALL
+        -- etldoc: landuse_z9 -> layer_landuse:z9
+        SELECT * FROM landuse_z9 WHERE zoom_level = 9
+        UNION ALL
+        -- etldoc: landuse_z10 -> layer_landuse:z10
+        SELECT * FROM landuse_z10 WHERE zoom_level = 10
+        UNION ALL
+        -- etldoc: landuse_z11 -> layer_landuse:z11
+        SELECT * FROM landuse_z11 WHERE zoom_level = 11
+        UNION ALL
+        -- etldoc: landuse_z12 -> layer_landuse:z12
+        SELECT * FROM landuse_z12 WHERE zoom_level = 12
+        UNION ALL
+        -- etldoc: landuse_z13 -> layer_landuse:z13
+        SELECT * FROM landuse_z13 WHERE zoom_level = 13
+        UNION ALL
+        -- etldoc: landuse_z14 -> layer_landuse:z14
+        SELECT * FROM landuse_z14 WHERE zoom_level >= 14
+    ) AS zoom_levels
+    WHERE geometry && bbox;
 $$ LANGUAGE SQL IMMUTABLE;

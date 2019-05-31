@@ -1,43 +1,31 @@
 layer:
-  id: "landuse"
+  id: "water"
   description: |
-    Landuse is used to describe use of land by humans. At lower zoom levels this is
-         from Natural Earth data for residential (urban) areas and at higher zoom levels mostly OSM `landuse` tags.
-  buffer_size: 4
+      Water polygons representing oceans and lakes. Covered watered areas are excluded (`covered=yes`).
+      On low zoom levels all water originates from Natural Earth. To get a more correct display of the south pole you should also
+      style the covering ice shelves over the water.
+      On higher zoom levels water polygons from [OpenStreetMapData](http://osmdata.openstreetmap.de/) are used.
+      The polygons are split into many smaller polygons to improve rendering performance.
+      This however can lead to less rendering options in clients since these boundaries show up. So you might not be
+      able to use border styling for ocean water features.
   fields:
     class:
       description: |
-        Use the **class** to assign special colors to areas.
-        Original value of either the
-        [`amenity`](http://wiki.openstreetmap.org/wiki/Key:amenity),
-        [`tourism`](http://wiki.openstreetmap.org/wiki/Key:tourism),
-        [`landuse`](http://wiki.openstreetmap.org/wiki/Key:landuse),
-        or [`leisure`](http://wiki.openstreetmap.org/wiki/Key:leisure) tag.
+          All water polygons from [OpenStreetMapData](http://osmdata.openstreetmap.de/) have the class `ocean`.
+          Water bodies are classified as `lake` or `river` for water bodies with the [`waterway`](http://wiki.openstreetmap.org/wiki/Key:waterway) tag.
       values:
-        - school
-        - university
-        - kindergarten
-        - college
-        - library
-        - hospital
-        - railway
-        - cemetery
-        - military
-        - residential
-        - commercial
-        - industrial
-        - retail
-        - stadium
-        - pitch
-        - playground
-        - theme_park
-        - bus_station
-        - zoo
+      - ocean
+      - lake
+      - river
+    intermittent:
+      description: |
+        Mark with `1` if it is an [intermittent](http://wiki.openstreetmap.org/wiki/Key:intermittent) water polygon.
+      values: [0, 1]
+  buffer_size: 4
   datasource:
-    geometry_field: geometry
-    query: (SELECT geometry, class, landuse, amenity, leisure, tourism FROM layer_landuse(!bbox!, z(!scale_denominator!))) AS t
+    query: (SELECT geometry, class, intermittent FROM layer_water(!bbox!, z(!scale_denominator!))) AS t
 schema:
-  - ./landuse.sql
+  - ./water.sql
 datasources:
   - type: imposm3
     mapping_file: ./mapping.yaml
