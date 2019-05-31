@@ -1,0 +1,56 @@
+layers:
+  id: power
+  buffer_size: 20
+  fields:
+    area:
+      description: area
+    bridge:
+      description: bridge
+    cables:
+      description: cables
+    construction:
+      description: construction
+    frequency:
+      description: frequency
+    layer:
+      description: layer
+    length:
+      description: length
+    line:
+      description: line
+    location:
+      description: location
+    name:
+      description: name
+    note:
+      description: note
+    operator:
+      description: operator
+    osm_id:
+      description: osm_id
+    power:
+      description: power
+    proposed:
+      description: proposed
+    ref:
+      description: ref
+    tunnel:
+      description: tunnel
+    voltage:
+      description: voltage
+    way:
+      description: way
+    way_area:
+      description: way_area
+    wires:
+      description: wires
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- power.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

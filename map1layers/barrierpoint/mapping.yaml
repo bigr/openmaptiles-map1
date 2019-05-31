@@ -1,0 +1,16 @@
+tables:
+  barrierpoint:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: barrier, name: barrier, type: string}
+    - {key: name, name: name, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      barrier: [__any__]
+    type: point
+

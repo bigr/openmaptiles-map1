@@ -1,0 +1,44 @@
+layers:
+  id: waterway2
+  buffer_size: 20
+  fields:
+    area:
+      description: area
+    bridge:
+      description: bridge
+    int_name:
+      description: int_name
+    layer:
+      description: layer
+    name:
+      description: name
+    name:cs:
+      description: name:cs
+    name:de:
+      description: name:de
+    name:en:
+      description: name:en
+    osm_id:
+      description: osm_id
+    tunnel:
+      description: tunnel
+    waterway:
+      description: waterway
+    way:
+      description: way
+    way_area:
+      description: way_area
+    website:
+      description: website
+    wikipedia:
+      description: wikipedia
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- waterway2.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

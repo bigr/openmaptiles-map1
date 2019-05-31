@@ -1,0 +1,32 @@
+layers:
+  id: aerialpoint
+  buffer_size: 20
+  fields:
+    aerialway:
+      description: aerialway
+    area:
+      description: area
+    bridge:
+      description: bridge
+    layer:
+      description: layer
+    name:
+      description: name
+    osm_id:
+      description: osm_id
+    piste:lift:
+      description: piste:lift
+    tunnel:
+      description: tunnel
+    way:
+      description: way
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- aerialpoint.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

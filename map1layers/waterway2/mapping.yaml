@@ -1,0 +1,22 @@
+tables:
+  waterway2:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: waterway, name: waterway, type: string}
+    - {key: name, name: name, type: string}
+    - {key: int_name, name: int_name, type: string}
+    - {key: "name:en", name: "name:en", type: string}
+    - {key: "name:de", name: "name:de", type: string}
+    - {key: "name:cs", name: "name:cs", type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: website, name: website, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      waterway: [dam,lock_gate]
+    type: linestring

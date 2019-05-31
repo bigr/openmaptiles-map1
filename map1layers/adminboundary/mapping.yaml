@@ -1,0 +1,19 @@
+tables:
+  adminboundary:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: name, name: name, type: string}
+    - {key: int_name, name: int_name, type: string}
+    - {key: "name:en", name: "name:en", type: string}
+    - {key: "name:de", name: "name:de", type: string}
+    - {key: "name:cs", name: "name:cs", type: string}
+    - {key: admin_level, name: admin_level, type: integer}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    filters:
+      require:
+        boundary: [administrative]
+    mapping:
+    type: polygon

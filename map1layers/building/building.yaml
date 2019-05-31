@@ -1,0 +1,74 @@
+layers:
+  id: building
+  buffer_size: 20
+  fields:
+    area:
+      description: area
+    bridge:
+      description: bridge
+    building:
+      description: building
+    building:architecture:
+      description: building:architecture
+    building:cladding:
+      description: building:cladding
+    building:facade:material:
+      description: building:facade:material
+    building:height:
+      description: building:height
+    building:levels:
+      description: building:levels
+    building:levels:aboveground:
+      description: building:levels:aboveground
+    building:levels:top:
+      description: building:levels:top
+    building:levels:underground:
+      description: building:levels:underground
+    building:material:
+      description: building:material
+    building:orientation:
+      description: building:orientation
+    building:roof:
+      description: building:roof
+    building:roof:material:
+      description: building:roof:material
+    building:roof:orientation:
+      description: building:roof:orientation
+    building:roof:shape:
+      description: building:roof:shape
+    building:structure:
+      description: building:structure
+    building:type:
+      description: building:type
+    building:use:
+      description: building:use
+    building:walls:
+      description: building:walls
+    description:
+      description: description
+    height:
+      description: height
+    layer:
+      description: layer
+    name:
+      description: name
+    osm_id:
+      description: osm_id
+    tunnel:
+      description: tunnel
+    wall:
+      description: wall
+    way:
+      description: way
+    way_area:
+      description: way_area
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- building.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

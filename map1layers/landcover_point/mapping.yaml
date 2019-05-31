@@ -1,0 +1,21 @@
+tables:
+  landcover_point:
+    fields:
+    - {key: area, name: area, type: string}
+    - {key: natural, name: natural, type: string}
+    - {key: name, name: name, type: string}
+    - {key: wood, name: wood, type: string}
+    - {key: type, name: type, type: string}
+    - {key: species, name: species, type: string}
+    - {key: genus, name: genus, type: string}
+    - {key: taxon, name: taxon, type: string}
+    - {key: denotation, name: denotation, type: string}
+    - {key: attribution, name: attribution, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: website, name: website, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      natural: [__any__]
+    type: point

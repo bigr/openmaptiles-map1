@@ -1,0 +1,70 @@
+layers:
+  id: railway
+  buffer_size: 20
+  fields:
+    area:
+      description: area
+    bridge:
+      description: bridge
+    colour:
+      description: colour
+    construction:
+      description: construction
+    cutting:
+      description: cutting
+    electrified:
+      description: electrified
+    embankment:
+      description: embankment
+    frequency:
+      description: frequency
+    gauge:
+      description: gauge
+    layer:
+      description: layer
+    maxspeed:
+      description: maxspeed
+    name:
+      description: name
+    operator:
+      description: operator
+    osm_id:
+      description: osm_id
+    public_transport:
+      description: public_transport
+    railway:
+      description: railway
+    ref:
+      description: ref
+    service:
+      description: service
+    surface:
+      description: surface
+    tram:
+      description: tram
+    transport:
+      description: transport
+    tunnel:
+      description: tunnel
+    usage:
+      description: usage
+    voltage:
+      description: voltage
+    way:
+      description: way
+    website:
+      description: website
+    width:
+      description: width
+    wikipedia:
+      description: wikipedia
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- railway.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

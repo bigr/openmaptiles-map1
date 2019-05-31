@@ -1,0 +1,48 @@
+layers:
+  id: powerpoint
+  buffer_size: 20
+  fields:
+    area:
+      description: area
+    bridge:
+      description: bridge
+    colour:
+      description: colour
+    design:
+      description: design
+    design:incomplete:
+      description: design:incomplete
+    design:name:
+      description: design:name
+    height:
+      description: height
+    layer:
+      description: layer
+    material:
+      description: material
+    name:
+      description: name
+    osm_id:
+      description: osm_id
+    power:
+      description: power
+    ref:
+      description: ref
+    structure:
+      description: structure
+    tower:type:
+      description: tower:type
+    tunnel:
+      description: tunnel
+    way:
+      description: way
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- powerpoint.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

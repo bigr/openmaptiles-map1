@@ -1,0 +1,18 @@
+tables:
+  accessarea:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: access, name: access, type: string}
+    - {key: name, name: name, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    filters:
+      reject:
+        highway: [__any__]
+      require:
+        access: [__any__]
+    mapping:
+      access: [__any__]
+    type: polygon

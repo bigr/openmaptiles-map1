@@ -1,0 +1,11 @@
+tables:
+  highway_point:
+    fields:
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    - {key: highway, name: highway, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: name, name: name, type: string}
+    mapping:
+      highway: [__any__]
+    type: point

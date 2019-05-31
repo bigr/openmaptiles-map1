@@ -1,0 +1,55 @@
+tables:
+  route:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: highway, name: highway, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: int_ref, name: int_ref, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: construction, name: construction, type: string}
+    - {key: oneway, name: oneway, type: string}
+    - {key: junction, name: junction, type: string}
+    - {key: smoothness, name: smoothness, type: string}
+    - {key: surface, name: surface, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {key: tracktype, name: tracktype, type: string}
+    - {key: route, name: route, type: string}
+    - {key: "mtb:scale", name: "mtb:scale", type: string}
+    - {key: "mtb:scale:uphill", name: "mtb:scale:uphill", type: string}
+    - {key: sac_scale, name: sac_scale, type: string}
+    - {key: network, name: network, type: string}
+    - {key: "osmc:symbol", name: "osmc:symbol", type: string}
+    - {key: access, name: access, type: string}
+    - {key: bicycle, name: bicycle, type: string}
+    - {key: foot, name: foot, type: string}
+    - {key: horse, name: horse, type: string}
+    - {key: lcn_ref, name: lcn_ref, type: string}
+    - {key: rcn_ref, name: rcn_ref, type: string}
+    - {key: ncn_ref, name: ncn_ref, type: string}
+    - {key: lcn, name: lcn, type: string}
+    - {key: rcn, name: rcn, type: string}
+    - {key: ncn, name: ncn, type: string}
+    - {key: lwn_ref, name: lwn_ref, type: string}
+    - {key: rwn_ref, name: rwn_ref, type: string}
+    - {key: nwn_ref, name: nwn_ref, type: string}
+    - {key: lwn, name: lwn, type: string}
+    - {key: rwn, name: rwn, type: string}
+    - {key: nwn, name: nwn, type: string}
+    - {key: route_pref_color, name: route_pref_color, type: string}
+    - {key: route_name, name: route_name, type: string}
+    - {key: mtb, name: mtb, type: string}
+    - {key: name, name: name, type: string}
+    - {key: color, name: color, type: string}
+    - {key: colour, name: colour, type: string}
+    - {key: kct_red, name: kct_red, type: string}
+    - {key: kct_green, name: kct_green, type: string}
+    - {key: kct_blue, name: kct_blue, type: string}
+    - {key: kct_yellow, name: kct_yellow, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      route: [mtb,horse,ski,bicycle,horse,hiking,mountain hiking,foot]
+    type: linestring

@@ -1,0 +1,47 @@
+tables:
+  paboundary:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: boundary, name: boundary, type: string}
+    - {key: landuse, name: landuse, type: string}
+    - {key: military, name: military, type: string}
+    - {key: leisure, name: leisure, type: string}
+    - {key: name, name: name, type: string}
+    - {key: protect_class, name: protect_class, type: integer}
+    - {key: iucn_level, name: iucn_level, type: string}
+    - {key: protection_title, name: protection_title, type: string}
+    - {key: protection_object, name: protection_object, type: string}
+    - {key: protection_aim, name: protection_aim, type: string}
+    - {key: protection_ban, name: protection_ban, type: string}
+    - {key: protection_instruction, name: protection_instruction, type: string}
+    - {key: related_law, name: related_law, type: string}
+    - {key: site_zone, name: site_zone, type: string}
+    - {key: valid_from, name: valid_from, type: string}
+    - {key: start_date, name: start_date, type: string}
+    - {key: end_date, name: end_date, type: string}
+    - {key: opening_hours, name: opening_hours, type: string}
+    - {key: operator, name: operator, type: string}
+    - {key: governance_type, name: governance_type, type: string}
+    - {key: site_ownership, name: site_ownership, type: string}
+    - {key: site_status, name: site_status, type: string}
+    - {key: protection_award, name: protection_award, type: string}
+    - {key: contamination, name: contamination, type: string}
+    - {key: ethnic_group, name: ethnic_group, type: string}
+    - {key: period, name: period, type: string}
+    - {key: scale, name: scale, type: string}
+    - {key: ownership, name: ownership, type: string}
+    - {key: owner, name: owner, type: string}
+    - {key: attribution, name: attribution, type: string}
+    - {key: type, name: type, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: website, name: website, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      boundary: [protected_area,national_park]
+      landuse: [military]
+      military: [danger_area,range]
+      leisure: [nature_reserve]
+    type: polygon

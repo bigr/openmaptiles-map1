@@ -1,0 +1,38 @@
+layers:
+  id: place
+  buffer_size: 20
+  fields:
+    area:
+      description: area
+    ele:
+      description: ele
+    int_name:
+      description: int_name
+    name:
+      description: name
+    name:cs:
+      description: name:cs
+    name:de:
+      description: name:de
+    name:en:
+      description: name:en
+    osm_id:
+      description: osm_id
+    place:
+      description: place
+    population:
+      description: population
+    way:
+      description: way
+    wikipedia:
+      description: wikipedia
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- place.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

@@ -1,0 +1,44 @@
+layers:
+  id: barrier
+  buffer_size: 20
+  fields:
+    area:
+      description: area
+    barrier:
+      description: barrier
+    bridge:
+      description: bridge
+    fence_type:
+      description: fence_type
+    height:
+      description: height
+    layer:
+      description: layer
+    material:
+      description: material
+    name:
+      description: name
+    osm_id:
+      description: osm_id
+    stile:
+      description: stile
+    tunnel:
+      description: tunnel
+    way:
+      description: way
+    way_area:
+      description: way_area
+    website:
+      description: website
+    wikipedia:
+      description: wikipedia
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- barrier.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

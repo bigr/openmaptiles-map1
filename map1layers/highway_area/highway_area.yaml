@@ -1,0 +1,132 @@
+layers:
+  id: highway_area
+  buffer_size: 20
+  fields:
+    ATV:
+      description: ATV
+    access:
+      description: access
+    agricultural:
+      description: agricultural
+    area:
+      description: area
+    attribution:
+      description: attribution
+    atv:
+      description: atv
+    bicycle:
+      description: bicycle
+    bridge:
+      description: bridge
+    bus:
+      description: bus
+    caravan:
+      description: caravan
+    carriage:
+      description: carriage
+    construction:
+      description: construction
+    cycleway:
+      description: cycleway
+    foot:
+      description: foot
+    footway:
+      description: footway
+    goods:
+      description: goods
+    hgv:
+      description: hgv
+    highway:
+      description: highway
+    horse:
+      description: horse
+    ice_skates:
+      description: ice_skates
+    inline_skates:
+      description: inline_skates
+    int_ref:
+      description: int_ref
+    junction:
+      description: junction
+    lanes:
+      description: lanes
+    layer:
+      description: layer
+    lit:
+      description: lit
+    maxspeed:
+      description: maxspeed
+    mofa:
+      description: mofa
+    moped:
+      description: moped
+    motor_vehicle:
+      description: motor_vehicle
+    motorcar:
+      description: motorcar
+    motorcycle:
+      description: motorcycle
+    motorhome:
+      description: motorhome
+    mtb:scale:
+      description: mtb:scale
+    name:
+      description: name
+    oneway:
+      description: oneway
+    osm_id:
+      description: osm_id
+    psv:
+      description: psv
+    ref:
+      description: ref
+    sac_scale:
+      description: sac_scale
+    service:
+      description: service
+    sidewalk:
+      description: sidewalk
+    ski:
+      description: ski
+    ski:alpine:
+      description: ski:alpine
+    ski:nordic:
+      description: ski:nordic
+    ski:telemark:
+      description: ski:telemark
+    smoothness:
+      description: smoothness
+    snowmobile:
+      description: snowmobile
+    surface:
+      description: surface
+    taxi:
+      description: taxi
+    tourist_bus:
+      description: tourist_bus
+    tracktype:
+      description: tracktype
+    trailer:
+      description: trailer
+    tunnel:
+      description: tunnel
+    vehicle:
+      description: vehicle
+    way:
+      description: way
+    way_area:
+      description: way_area
+    width:
+      description: width
+    wikipedia:
+      description: wikipedia
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- highway_area.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

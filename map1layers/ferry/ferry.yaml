@@ -1,0 +1,90 @@
+layers:
+  id: ferry
+  buffer_size: 20
+  fields:
+    ATV:
+      description: ATV
+    access:
+      description: access
+    agricultural:
+      description: agricultural
+    area:
+      description: area
+    atv:
+      description: atv
+    bicycle:
+      description: bicycle
+    bus:
+      description: bus
+    caravan:
+      description: caravan
+    carriage:
+      description: carriage
+    duration:
+      description: duration
+    foot:
+      description: foot
+    goods:
+      description: goods
+    hgv:
+      description: hgv
+    horse:
+      description: horse
+    ice_skates:
+      description: ice_skates
+    inline_skates:
+      description: inline_skates
+    mofa:
+      description: mofa
+    moped:
+      description: moped
+    motor_vehicle:
+      description: motor_vehicle
+    motorcar:
+      description: motorcar
+    motorcycle:
+      description: motorcycle
+    motorhome:
+      description: motorhome
+    name:
+      description: name
+    operator:
+      description: operator
+    osm_id:
+      description: osm_id
+    psv:
+      description: psv
+    ref:
+      description: ref
+    route:
+      description: route
+    ski:
+      description: ski
+    ski:alpine:
+      description: ski:alpine
+    ski:nordic:
+      description: ski:nordic
+    ski:telemark:
+      description: ski:telemark
+    snowmobile:
+      description: snowmobile
+    taxi:
+      description: taxi
+    tourist_bus:
+      description: tourist_bus
+    trailer:
+      description: trailer
+    vehicle:
+      description: vehicle
+    way:
+      description: way
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- ferry.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

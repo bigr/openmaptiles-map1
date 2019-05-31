@@ -1,0 +1,67 @@
+tables:
+  highway_area:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: highway, name: highway, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: int_ref, name: int_ref, type: string}
+    - {key: lanes, name: lanes, type: integer}
+    - {key: maxspeed, name: maxspeed, type: integer}
+    - {key: width, name: width, type: integer}
+    - {key: lit, name: lit, type: string}
+    - {key: sidewalk, name: sidewalk, type: string}
+    - {key: footway, name: footway, type: string}
+    - {key: cycleway, name: cycleway, type: string}
+    - {key: "mtb:scale", name: "mtb:scale", type: integer}
+    - {key: sac_scale, name: sac_scale, type: integer}
+    - {key: attribution, name: attribution, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: construction, name: construction, type: string}
+    - {key: proposed, name: proposed, type: string}
+    - {key: junction, name: junction, type: string}
+    - {key: smoothness, name: smoothness, type: string}
+    - {key: surface, name: surface, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {key: tracktype, name: tracktype, type: string}
+    - {key: service, name: service, type: string}
+    - {key: access, name: access, type: string}
+    - {key: foot, name: foot, type: string}
+    - {key: ski, name: ski, type: string}
+    - {key: "ski:nordic", name: "ski:nordic", type: string}
+    - {key: "ski:alpine", name: "ski:alpine", type: string}
+    - {key: "ski:telemark", name: "ski:telemark", type: string}
+    - {key: inline_skates, name: inline_skates, type: string}
+    - {key: ice_skates, name: ice_skates, type: string}
+    - {key: horse, name: horse, type: string}
+    - {key: vehicle, name: vehicle, type: string}
+    - {key: bicycle, name: bicycle, type: string}
+    - {key: carriage, name: carriage, type: string}
+    - {key: trailer, name: trailer, type: string}
+    - {key: caravan, name: caravan, type: string}
+    - {key: motor_vehicle, name: motor_vehicle, type: string}
+    - {key: motorcycle, name: motorcycle, type: string}
+    - {key: moped, name: moped, type: string}
+    - {key: mofa, name: mofa, type: string}
+    - {key: motorcar, name: motorcar, type: string}
+    - {key: motorhome, name: motorhome, type: string}
+    - {key: psv, name: psv, type: string}
+    - {key: bus, name: bus, type: string}
+    - {key: atv, name: atv, type: string}
+    - {key: taxi, name: taxi, type: string}
+    - {key: tourist_bus, name: tourist_bus, type: string}
+    - {key: goods, name: goods, type: string}
+    - {key: hgv, name: hgv, type: string}
+    - {key: agricultural, name: agricultural, type: string}
+    - {key: ATV, name: ATV, type: string}
+    - {key: snowmobile, name: snowmobile, type: string}
+    - {key: name, name: name, type: string}
+    - {key: oneway, name: oneway, type: direction}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      highway: [__any__]
+    type: polygon

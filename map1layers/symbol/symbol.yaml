@@ -1,0 +1,96 @@
+layers:
+  id: symbol_polygon
+  buffer_size: 20
+  fields:
+    aeroway:
+      description: aeroway
+    amenity:
+      description: amenity
+    area:
+      description: area
+    building:
+      description: building
+    cargo:
+      description: cargo
+    castle_type:
+      description: castle_type
+    colour:
+      description: colour
+    cuisine:
+      description: cuisine
+    fee:
+      description: fee
+    highway:
+      description: highway
+    historic:
+      description: historic
+    information:
+      description: information
+    int_name:
+      description: int_name
+    leisure:
+      description: leisure
+    man_made:
+      description: man_made
+    maxheight:
+      description: maxheight
+    memorial:
+      description: memorial
+    military:
+      description: military
+    name:
+      description: name
+    name:cs:
+      description: name:cs
+    name:de:
+      description: name:de
+    name:en:
+      description: name:en
+    natural:
+      description: natural
+    operator:
+      description: operator
+    osm_id:
+      description: osm_id
+    parking:
+      description: parking
+    place_of_worship:
+      description: place_of_worship
+    place_of_worship:type:
+      description: place_of_worship:type
+    power:
+      description: power
+    public_transport:
+      description: public_transport
+    railway:
+      description: railway
+    ruins:
+      description: ruins
+    shop:
+      description: shop
+    sport:
+      description: sport
+    surveillance:
+      description: surveillance
+    tourism:
+      description: tourism
+    tower:type:
+      description: tower:type
+    transport:
+      description: transport
+    way:
+      description: way
+    website:
+      description: website
+    wikipedia:
+      description: wikipedia
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- symbol.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

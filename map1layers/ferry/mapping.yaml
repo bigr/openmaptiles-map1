@@ -1,0 +1,47 @@
+tables:
+  ferry:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: route, name: route, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: name, name: name, type: string}
+    - {key: duration, name: duration, type: string}
+    - {key: operator, name: operator, type: string}
+    - {key: access, name: access, type: string}
+    - {key: foot, name: foot, type: string}
+    - {key: ski, name: ski, type: string}
+    - {key: "ski:nordic", name: "ski:nordic", type: string}
+    - {key: "ski:alpine", name: "ski:alpine", type: string}
+    - {key: "ski:telemark", name: "ski:telemark", type: string}
+    - {key: inline_skates, name: inline_skates, type: string}
+    - {key: ice_skates, name: ice_skates, type: string}
+    - {key: horse, name: horse, type: string}
+    - {key: vehicle, name: vehicle, type: string}
+    - {key: bicycle, name: bicycle, type: string}
+    - {key: carriage, name: carriage, type: string}
+    - {key: trailer, name: trailer, type: string}
+    - {key: caravan, name: caravan, type: string}
+    - {key: motor_vehicle, name: motor_vehicle, type: string}
+    - {key: motorcycle, name: motorcycle, type: string}
+    - {key: moped, name: moped, type: string}
+    - {key: mofa, name: mofa, type: string}
+    - {key: motorcar, name: motorcar, type: string}
+    - {key: motorhome, name: motorhome, type: string}
+    - {key: psv, name: psv, type: string}
+    - {key: bus, name: bus, type: string}
+    - {key: atv, name: atv, type: string}
+    - {key: taxi, name: taxi, type: string}
+    - {key: tourist_bus, name: tourist_bus, type: string}
+    - {key: goods, name: goods, type: string}
+    - {key: hgv, name: hgv, type: string}
+    - {key: agricultural, name: agricultural, type: string}
+    - {key: ATV, name: ATV, type: string}
+    - {key: snowmobile, name: snowmobile, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    filters:
+      require:
+        route: ["ferry"]
+    mapping:
+    type: linestring

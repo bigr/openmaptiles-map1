@@ -1,0 +1,26 @@
+layer:
+  id: "settlement_urban"
+  description: |
+      place[city|town|village|hamlet|isolated_dwelling]
+  buffer_size: 4
+  fields:
+    name: The OSM [`name`](http://wiki.openstreetmap.org/wiki/Key:name) value of the POI.
+    class:
+      description: |
+          Type of the settlement
+      values:
+      - city
+      - town
+      - village
+      - hamlet
+      - isolated_dwelling
+  datasource:
+    geometry_field: geometry
+    key_field: osm_id
+    key_field_as_attribute: no
+    query: (SELECT osm_id, geometry, name, class FROM layer_settlement_urban(!bbox!, z(!scale_denominator!), !pixel_width!)) AS t
+schema:
+  - ./settlement_urban.sql
+datasources:
+  - type: imposm3
+    mapping_file: ./mapping.yaml

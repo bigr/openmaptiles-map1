@@ -1,0 +1,42 @@
+tables:
+  building:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: building, name: building, type: string}
+    - {key: wall, name: wall, type: string}
+    - {key: "building:material", name: "building:material", type: string}
+    - {key: "building:levels", name: "building:levels", type: string}
+    - {key: "building:use", name: "building:use", type: string}
+    - {key: "building:roof", name: "building:roof", type: string}
+    - {key: "building:roof:shape", name: "building:roof:shape", type: string}
+    - {key: "building:walls", name: "building:walls", type: string}
+    - {key: "building:structure", name: "building:structure", type: string}
+    - {key: "building:type", name: "building:type", type: string}
+    - {key: "building:height", name: "building:height", type: string}
+    - {key: "building:cladding", name: "building:cladding", type: string}
+    - {key: "building:orientation", name: "building:orientation", type: string}
+    - {key: "building:roof:orientation", name: "building:roof:orientation", type: string}
+    - {key: "building:architecture", name: "building:architecture", type: string}
+    - {key: "building:levels:aboveground", name: "building:levels:aboveground", type: string}
+    - {key: "building:levels:underground", name: "building:levels:underground", type: string}
+    - {key: "building:facade:material", name: "building:facade:material", type: string}
+    - {key: "building:roof:material", name: "building:roof:material", type: string}
+    - {key: "building:levels:top", name: "building:levels:top", type: string}
+    - {key: name, name: name, type: string}
+    - {key: description, name: description, type: string}
+    - {key: height, name: height, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    filters:
+      reject:
+        building: ["no","0","false","No","False","bridge","tunnel"]
+        bridge: ["yes","true","1","Yes","True"]
+        tunnel: ["yes","true","1","Yes","True"]
+    mapping:
+      building: [__any__]
+    type: polygon

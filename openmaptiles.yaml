@@ -1,28 +1,44 @@
 tileset:
   layers:
-    - layers/water/water.yaml
-    - layers/waterway/waterway.yaml
-    - layers/landcover/landcover.yaml
-    - layers/landuse/landuse.yaml
-    - layers/mountain_peak/mountain_peak.yaml
-    - layers/park/park.yaml
-    - layers/boundary/boundary.yaml
-    - layers/aeroway/aeroway.yaml
-    - layers/transportation/transportation.yaml
-    - layers/building/building.yaml
-    - layers/water_name/water_name.yaml
-    - layers/transportation_name/transportation_name.yaml
-    - layers/place/place.yaml
-    - layers/housenumber/housenumber.yaml
-    - layers/poi/poi.yaml
-    - layers/aerodrome_label/aerodrome_label.yaml
-  name: OpenMapTiles
-  version: 3.9.0
-  id: openmaptiles
-  description: "A tileset showcasing all layers in OpenMapTiles. https://openmaptiles.org"
+  - map1layers/railway/railway.yaml
+#  - map1layers/landcover_point/landcover_point.yaml
+#  - map1layers/accessarea/accessarea.yaml
+#  - map1layers/waterway2/waterway2.yaml
+#  - map1layers/pisteway/pisteway.yaml
+#  - map1layers/aeroway/aeroway.yaml
+#  - map1layers/waterarea/waterarea.yaml
+#  - map1layers/highway_area/highway_area.yaml
+#  - map1layers/place/place.yaml
+#  - map1layers/aeroarea/aeroarea.yaml
+#  - map1layers/power/power.yaml
+#  - map1layers/highway/highway.yaml
+#  - map1layers/aerialpoint/aerialpoint.yaml
+#  - map1layers/waterpoint_line/waterpoint_line.yaml
+#  - map1layers/landcover_line/landcover_line.yaml
+#  - map1layers/barrierpoint/barrierpoint.yaml
+#  - map1layers/building/building.yaml
+#  - map1layers/symbol_point/symbol_point.yaml
+#  - map1layers/route/route.yaml
+#  - map1layers/powerpoint/powerpoint.yaml
+#  - map1layers/adminboundary/adminboundary.yaml
+#  - map1layers/symbol_polygon/symbol_polygon.yaml
+#  - map1layers/barrier/barrier.yaml
+#  - map1layers/waterpoint_point/waterpoint_point.yaml
+#  - map1layers/paboundary/paboundary.yaml
+#  - map1layers/landcover/landcover.yaml
+#  - map1layers/ferry/ferry.yaml
+#  - map1layers/pistearea/pistearea.yaml
+#  - map1layers/peaks/peaks.yaml
+#  - map1layers/aerialway/aerialway.yaml
+#  - map1layers/highway_point/highway_point.yaml
+#  - map1layers/waterway/waterway.yaml
+  name: map1eu
+  version: 0.2.0
+  id: map1eu
+  description: "A tileset showcasing all layers in Map1eu. https://map1.eu"
   attribution: '<a href="https://www.openmaptiles.org/" target="_blank">&copy; OpenMapTiles</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
-  center: [-12.2168, 28.6135, 4]
-  bounds: [-180.0,-85.0511,180.0,85.0511]
+  center: [14.4, 50.1, 8]
+  bounds: [14.265088,50.082495,14.539746,50.268949]
   maxzoom: 14
   minzoom: 0
   pixel_scale: 256

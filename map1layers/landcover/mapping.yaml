@@ -1,0 +1,42 @@
+tables:
+  landcover:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: natural, name: natural, type: string}
+    - {key: landuse, name: landuse, type: string}
+    - {key: leisure, name: leisure, type: string}
+    - {key: amenity, name: amenity, type: string}
+    - {key: sport, name: sport, type: string}
+    - {key: name, name: name, type: string}
+    - {key: wood, name: wood, type: string}
+    - {key: type, name: type, type: string}
+    - {key: religion, name: religion, type: string}
+    - {key: building, name: building, type: string}
+    - {key: power, name: power, type: string}
+    - {key: tourism, name: tourism, type: string}
+    - {key: historic, name: historic, type: string}
+    - {key: place, name: place, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: website, name: website, type: string}
+    - {key: ele, name: ele, type: string}
+    - {key: attribution, name: attribution, type: string}
+    - {key: species, name: species, type: string}
+    - {key: operator, name: operator, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    filters:
+      reject:
+        natural: ["wetland","marsh","water"]
+        landuse: ["basin","reservoir"]
+    mapping:
+      amenity: [__any__]
+      historic: [__any__]
+      landuse: [__any__]
+      leisure: [__any__]
+      natural: [__any__]
+      place: [__any__]
+      power: [__any__]
+      tourism: [__any__]
+    type: polygon

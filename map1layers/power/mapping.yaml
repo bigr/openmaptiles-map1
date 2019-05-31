@@ -1,0 +1,29 @@
+tables:
+  power:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: power, name: power, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: note, name: note, type: string}
+    - {key: line, name: line, type: string}
+    - {key: length, name: length, type: string}
+    - {key: location, name: location, type: string}
+    - {key: voltage, name: voltage, type: string}
+    - {key: cables, name: cables, type: string}
+    - {key: wires, name: wires, type: string}
+    - {key: frequency, name: frequency, type: string}
+    - {key: operator, name: operator, type: string}
+    - {key: name, name: name, type: string}
+    - {key: construction, name: construction, type: string}
+    - {key: proposed, name: proposed, type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      power: [line,minor_line,cable]
+    type: linestring
+

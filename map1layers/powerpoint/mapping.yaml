@@ -1,0 +1,24 @@
+tables:
+ powerpoint:
+    fields:
+    - {key: area, name: area, type: string}
+    - {key: power, name: power, type: string}
+    - {key: name, name: name, type: string}
+    - {key: ref, name: ref, type: string}
+    - {key: material, name: material, type: string}
+    - {key: structure, name: structure, type: string}
+    - {key: height, name: height, type: string}
+    - {key: colour, name: colour, type: string}
+    - {key: "tower:type", name: "tower:type", type: string}
+    - {key: design, name: design, type: string}
+    - {key: "design:name", name: "design:name", type: string}
+    - {key: "design:incomplete", name: "design:incomplete", type: string}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      power: [__any__]
+    type: point

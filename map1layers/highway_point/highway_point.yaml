@@ -1,0 +1,26 @@
+layers:
+  id: highway_point
+  buffer_size: 20
+  fields:
+    area:
+      description: area
+    highway:
+      description: highway
+    name:
+      description: name
+    osm_id:
+      description: osm_id
+    ref:
+      description: ref
+    way:
+      description: way
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- highway_point.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

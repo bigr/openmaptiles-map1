@@ -1,0 +1,17 @@
+tables:
+  landcover_line:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: natural, name: natural, type: string}
+    - {key: name, name: name, type: string}
+    - {key: wood, name: wood, type: string}
+    - {key: type, name: type, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: website, name: website, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      natural: [__any__]
+    type: linestring

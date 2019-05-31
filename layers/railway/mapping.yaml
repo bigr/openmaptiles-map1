@@ -1,0 +1,57 @@
+generalized_tables:
+  # etldoc: imposm3 -> osm_waterway_linestring_gen2
+  waterway_linestring_gen2:
+    source: waterway_linestring_gen1
+    sql_filter: waterway IN ('river') AND ST_IsValid(geometry)
+    tolerance: ZRES8
+  # etldoc: imposm3 -> osm_waterway_linestring_gen1
+  waterway_linestring_gen1:
+    source: waterway_linestring
+    sql_filter: waterway IN ('river', 'canal', 'stream') AND ST_IsValid(geometry)
+    tolerance: ZRES9
+  waterway_linestring_gen0:
+    source: waterway_linestring
+    sql_filter: waterway IN ('river', 'canal', 'stream', 'drain', 'ditch') AND ST_IsValid(geometry)
+    tolerance: ZRES10
+
+tunnel_field: &tunnel
+  key: tunnel
+  name: is_tunnel
+  type: bool
+bridge_field: &bridge
+  key: bridge
+  name: is_bridge
+  type: bool
+
+tables:
+  # etldoc: imposm3 -> osm_waterway_linestring
+  waterway_linestring:
+    type: linestring
+    fields:
+    - name: osm_id
+      type: id
+    - name: geometry
+      type: geometry
+    - name: waterway
+      key: waterway
+      type: string
+    - key: name
+      name: name
+      type: string
+    - name: name_en
+      key: name:en
+      type: string
+    - name: name_de
+      key: name:de
+      type: string
+    - name: tags
+      type: hstore_tags
+    - *tunnel
+    - *bridge
+    mapping:
+      waterway:
+      - stream
+      - river
+      - canal
+      - drain
+      - ditch

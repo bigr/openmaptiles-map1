@@ -1,0 +1,110 @@
+layers:
+  id: route
+  buffer_size: 20
+  fields:
+    access:
+      description: access
+    area:
+      description: area
+    bicycle:
+      description: bicycle
+    bridge:
+      description: bridge
+    color:
+      description: color
+    colour:
+      description: colour
+    construction:
+      description: construction
+    foot:
+      description: foot
+    highway:
+      description: highway
+    horse:
+      description: horse
+    int_ref:
+      description: int_ref
+    junction:
+      description: junction
+    kct_blue:
+      description: kct_blue
+    kct_green:
+      description: kct_green
+    kct_red:
+      description: kct_red
+    kct_yellow:
+      description: kct_yellow
+    layer:
+      description: layer
+    lcn:
+      description: lcn
+    lcn_ref:
+      description: lcn_ref
+    lwn:
+      description: lwn
+    lwn_ref:
+      description: lwn_ref
+    mtb:
+      description: mtb
+    mtb:scale:
+      description: mtb:scale
+    mtb:scale:uphill:
+      description: mtb:scale:uphill
+    name:
+      description: name
+    ncn:
+      description: ncn
+    ncn_ref:
+      description: ncn_ref
+    network:
+      description: network
+    nwn:
+      description: nwn
+    nwn_ref:
+      description: nwn_ref
+    oneway:
+      description: oneway
+    osm_id:
+      description: osm_id
+    osmc:symbol:
+      description: osmc:symbol
+    rcn:
+      description: rcn
+    rcn_ref:
+      description: rcn_ref
+    ref:
+      description: ref
+    route:
+      description: route
+    route_name:
+      description: route_name
+    route_pref_color:
+      description: route_pref_color
+    rwn:
+      description: rwn
+    rwn_ref:
+      description: rwn_ref
+    sac_scale:
+      description: sac_scale
+    smoothness:
+      description: smoothness
+    surface:
+      description: surface
+    tracktype:
+      description: tracktype
+    tunnel:
+      description: tunnel
+    way:
+      description: way
+    way_area:
+      description: way_area
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- route.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

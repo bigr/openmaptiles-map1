@@ -1,0 +1,20 @@
+tables:
+  place:
+    fields:
+    - {key: area, name: area, type: string}
+    - {key: name, name: name, type: string}
+    - {key: int_name, name: int_name, type: string}
+    - {key: "name:en", name: "name:en", type: string}
+    - {key: "name:de", name: "name:de", type: string}
+    - {key: "name:cs", name: "name:cs", type: string}
+    - {key: population, name: population, type: integer}
+    - {key: ele, name: ele, type: integer}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {key: place, name: place, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      place: [city,town,village,hamlet,isolated_dwelling,farm,suburb,neighbourhood,locality,island,islet]
+    type: point
+

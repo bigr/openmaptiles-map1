@@ -1,0 +1,32 @@
+layers:
+  id: waterpoint_point
+  buffer_size: 20
+  fields:
+    area:
+      description: area
+    bridge:
+      description: bridge
+    building:
+      description: building
+    layer:
+      description: layer
+    name:
+      description: name
+    osm_id:
+      description: osm_id
+    tunnel:
+      description: tunnel
+    waterway:
+      description: waterway
+    way:
+      description: way
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- waterpoint.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

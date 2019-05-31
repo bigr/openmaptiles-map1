@@ -1,0 +1,25 @@
+tables:
+  waterarea:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: waterway, name: waterway, type: string}
+    - {key: natural, name: natural, type: string}
+    - {key: landuse, name: landuse, type: string}
+    - {key: wetland, name: wetland, type: string}
+    - {key: name, name: name, type: string}
+    - {key: layer, name: layer, type: integer}
+    - {key: bridge, name: bridge, type: string}
+    - {key: tunnel, name: tunnel, type: string}
+    - {key: building, name: building, type: string}
+    - {key: website, name: website, type: string}
+    - {key: wikipedia, name: wikipedia, type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      natural: [wetland,marsh,water]
+      waterway: [dock,riverbank,dam,weir]
+      landuse: [basin,reservoir]
+    type: polygon
+

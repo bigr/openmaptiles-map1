@@ -1,0 +1,26 @@
+layers:
+  id: accessarea
+  buffer_size: 20
+  fields:
+    access:
+      description: access
+    area:
+      description: area
+    name:
+      description: name
+    osm_id:
+      description: osm_id
+    way:
+      description: way
+    way_area:
+      description: way_area
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT * FROM layer_accessarea(!bbox!, z(!scale_denominator!)) AS t
+schema:
+- accessarea.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml

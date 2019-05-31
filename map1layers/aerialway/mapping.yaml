@@ -1,0 +1,17 @@
+tables:
+  aerialway:
+    fields:
+    - {key: area, name: area, type: bool}
+    - {key: aerialway, name: aerialway, type: string}
+    - {key: name, name: name, type: string}
+    - {key: bridge, name: bridge, type: bool}
+    - {key: tunnel, name: tunnel, type: bool}
+    - {key: layer, name: layer, type: integer}
+    - {key: "piste:lift", name: "piste:lift", type: string}
+    - {name: z_order, type: wayzorder}
+    - {name: way_area, type: area}
+    - {name: osm_id, type: id}
+    - {name: way, type: validated_geometry}
+    mapping:
+      aerialway: [__any__]
+    type: linestring

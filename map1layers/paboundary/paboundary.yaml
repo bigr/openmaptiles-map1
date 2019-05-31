@@ -1,0 +1,88 @@
+layers:
+  id: paboundary
+  buffer_size: 20
+  fields:
+    area:
+      description: area
+    attribution:
+      description: attribution
+    boundary:
+      description: boundary
+    contamination:
+      description: contamination
+    end_date:
+      description: end_date
+    ethnic_group:
+      description: ethnic_group
+    governance_type:
+      description: governance_type
+    iucn_level:
+      description: iucn_level
+    landuse:
+      description: landuse
+    leisure:
+      description: leisure
+    military:
+      description: military
+    name:
+      description: name
+    opening_hours:
+      description: opening_hours
+    operator:
+      description: operator
+    osm_id:
+      description: osm_id
+    owner:
+      description: owner
+    ownership:
+      description: ownership
+    period:
+      description: period
+    protect_class:
+      description: protect_class
+    protection_aim:
+      description: protection_aim
+    protection_award:
+      description: protection_award
+    protection_ban:
+      description: protection_ban
+    protection_instruction:
+      description: protection_instruction
+    protection_object:
+      description: protection_object
+    protection_title:
+      description: protection_title
+    related_law:
+      description: related_law
+    scale:
+      description: scale
+    site_ownership:
+      description: site_ownership
+    site_status:
+      description: site_status
+    site_zone:
+      description: site_zone
+    start_date:
+      description: start_date
+    type:
+      description: type
+    valid_from:
+      description: valid_from
+    way:
+      description: way
+    way_area:
+      description: way_area
+    website:
+      description: website
+    wikipedia:
+      description: wikipedia
+    z_order:
+      description: z_order
+  datasource:
+    geometry_field: way
+    query: (SELECT FROM ) AS t
+schema:
+- paboundary.sql
+datasources:
+- type: imposm3
+  mapping_file: ./mapping.yaml
