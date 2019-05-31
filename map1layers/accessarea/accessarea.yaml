@@ -1,4 +1,4 @@
-layers:
+layer:
   id: accessarea
   buffer_size: 20
   fields:

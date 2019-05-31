@@ -1,4 +1,4 @@
-layers:
+layer:
   id: aeroarea
   buffer_size: 20
   fields:

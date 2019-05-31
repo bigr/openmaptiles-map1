@@ -1,4 +1,4 @@
-layers:
+layer:
   id: building
   buffer_size: 20
   fields:

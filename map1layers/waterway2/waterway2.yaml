@@ -1,4 +1,4 @@
-layers:
+layer:
   id: waterway2
   buffer_size: 20
   fields:

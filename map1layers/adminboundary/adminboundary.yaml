@@ -1,4 +1,4 @@
-layers:
+layer:
   id: adminboundary
   buffer_size: 20
   fields:

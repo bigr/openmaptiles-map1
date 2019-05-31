@@ -1,4 +1,4 @@
-layers:
+layer:
   id: peaks
   buffer_size: 20
   fields:
