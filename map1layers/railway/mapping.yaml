@@ -4,9 +4,10 @@ tables:
     - {key: area, name: area, type: bool}
     - {key: railway, name: railway, type: string}
     - {key: ref, name: ref, type: string}
-    - {key: bridge, name: bridge, type: string}
-    - {key: tunnel, name: tunnel, type: string}
+    - {key: bridge, name: is_bridge, type: bool}
+    - {key: tunnel, name: is_tunnel, type: bool}
     - {key: construction, name: construction, type: string}
+    - {key: proposed, name: proposed, type: string}
     - {key: layer, name: layer, type: integer}
     - {key: usage, name: usage, type: string}
     - {key: service, name: service, type: string}

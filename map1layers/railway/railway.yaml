@@ -62,7 +62,7 @@ layer:
       description: z_order
   datasource:
     geometry_field: way
-    query: (SELECT FROM ) AS t
+    query: (SELECT * FROM layer_railway(!bbox!, z(!scale_denominator!), !pixel_width!)) AS t
 schema:
 - railway.sql
 datasources:

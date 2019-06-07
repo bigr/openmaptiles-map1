@@ -1,6 +1,6 @@
 
 
-CREATE OR REPLACE FUNCTION get_railway(railway TEXT, construction TEXT, proposed TEXT)
+CREATE OR REPLACE FUNCTION get_railway(railway VARCHAR, construction VARCHAR, proposed VARCHAR)
 RETURNS TEXT AS $$
     SELECT CASE
         WHEN railway = 'construction' THEN construction
@@ -10,7 +10,7 @@ RETURNS TEXT AS $$
 $$ LANGUAGE SQL IMMUTABLE;
 
 
-CREATE OR REPLACE FUNCTION get_railway_grade(railway, usage, service)
+CREATE OR REPLACE FUNCTION get_railway_grade(railway VARCHAR, usage VARCHAR, service VARCHAR)
 RETURNS INT AS $$
     SELECT CASE
         WHEN railway IN ('rail','narrow_gaugue') THEN (
@@ -27,7 +27,7 @@ RETURNS INT AS $$
     END
 $$ LANGUAGE SQL IMMUTABLE;
 
-CREATE OR REPLACE FUNCTION get_railway_type(railway)
+CREATE OR REPLACE FUNCTION get_railway_type(railway VARCHAR)
 RETURNS TEXT AS $$
     SELECT CASE
         WHEN railway IN ('rail','light_rail','disused','abandoned','narrow_gauge') THEN 'train'
@@ -37,50 +37,51 @@ RETURNS TEXT AS $$
 $$ LANGUAGE SQL IMMUTABLE;
 
 
-CREATE OR REPLACE FUNCTION layer_railway(bbox GEOMETRY, zoom_level INT)
+CREATE OR REPLACE FUNCTION layer_railway(bbox GEOMETRY, zoom_level INT, pixel_width NUMERIC)
 RETURNS TABLE(
     osm_id BIGINT,
     way GEOMETRY,
-    railway TEXT,
-    type TEXT,
+    railway VARCHAR,
+    type VARCHAR,
     grade INT,
-    name TEXT,
+    name VARCHAR,
     layer INT,
     is_bridge BOOLEAN,
     is_tunnel BOOLEAN,
-    is_construction BOOLEAN
+    is_construction BOOLEAN,
     is_proposed BOOLEAN,
-    usage TEXT,
-    service TEXT,
-    gauge TEXT,
-    cutting TEXT,
-    embankment TEXT,
-    electrified TEXT,
-    frequency TEXT,
-    voltage TEXT,
-    operator TEXT,
-    maxspeed, TEXT,
-    wikipedia TEXT,
-    website TEXT,
-    colour TEXT,
-    transport TEXT,
-    public_transport TEXT,
-    tram TEXT,
-    surface TEXT,
-    width TEXT,
-    way_length REAL
+    usage VARCHAR,
+    service VARCHAR,
+    gauge INT,
+    cutting VARCHAR,
+    embankment VARCHAR,
+    electrified VARCHAR,
+    frequency VARCHAR,
+    voltage VARCHAR,
+    operator VARCHAR,
+    maxspeed VARCHAR,
+    wikipedia VARCHAR,
+    website VARCHAR,
+    colour VARCHAR,
+    transport VARCHAR,
+    public_transport VARCHAR,
+    tram VARCHAR,
+    surface VARCHAR,
+    width INT,
+    way_length DOUBLE PRECISION
 ) AS $$
     SELECT
-        osm_id, way, get_railway(railway) as railway, get_railway_type(get_railway(railway)) AS type,
-        get_railway_grade(get_railway(railway), usage, service) AS grade, name,
+        osm_id, way, get_railway(railway, construction, proposed) as railway, get_railway_type(get_railway(railway, construction, proposed)) AS type,
+        get_railway_grade(get_railway(railway, construction, proposed), usage, service) AS grade, name,
         get_layer(layer, is_bridge, is_tunnel) as layer, is_bridge, is_tunnel,
-        get_is_construction(highway, construction) AS is_construction, get_is_proposed(highway, proposed) AS is_proposed
+        get_is_construction(railway, construction) AS is_construction, get_is_proposed(railway, proposed) AS is_proposed,
         usage, service, gauge, cutting, embankment, electrified, frequency, voltage, operator, maxspeed,
         wikipedia, website, colour, transport, public_transport, tram, surface, width,
         ST_Length(ST_Transform(way,900913)) AS way_length
+    FROM osm_railway
     WHERE
              railway IS NOT NULL
         AND way && bbox
-	ORDER BY get_railway_grade(get_railway(railway), usage, service), osm_id DESC
+	ORDER BY get_railway_grade(get_railway(railway, construction, proposed), usage, service), osm_id DESC
 
 $$ LANGUAGE SQL IMMUTABLE;

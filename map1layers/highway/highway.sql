@@ -140,24 +140,6 @@ RETURNS TEXT AS $$
 $$ LANGUAGE SQL IMMUTABLE;
 
 
-CREATE OR REPLACE FUNCTION get_is_construction(highway TEXT, construction TEXT)
-RETURNS BOOLEAN AS $$
-    SELECT CASE
-        WHEN highway = 'construction' THEN TRUE
-        WHEN construction IN ('yes', '1','true') THEN TRUE
-        ELSE FALSE
-    END
-$$ LANGUAGE SQL IMMUTABLE;
-
-CREATE OR REPLACE FUNCTION get_is_proposed(highway TEXT, proposed TEXT)
-RETURNS BOOLEAN AS $$
-    SELECT CASE
-        WHEN highway = 'proposed' THEN TRUE
-        WHEN proposed IN ('yes', '1','true') THEN TRUE
-        ELSE FALSE
-    END
-$$ LANGUAGE SQL IMMUTABLE;
-
 
 CREATE OR REPLACE FUNCTION layer_highway(bbox GEOMETRY, zoom_level INT)
 RETURNS TABLE(
